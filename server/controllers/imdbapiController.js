@@ -5,11 +5,12 @@ const imdbapiController = {};
 
 const apiKey = 'k_kw4j52u2';
 
-imdbapiController.getPopularMovies = async (req, res, next) => {
+imdbapiController.getPopularMovies = (req, res, next) => {
+  console.log('getting pop movies')
   fetch(`https://imdb-api.com/en/API/MostPopularMovies/${apiKey}`)
     .then(data => data.json())
     .then(formattedData => {
-      console.log({formattedData})
+      // console.log({formattedData})
       res.locals.popularMovies = formattedData
       return next()
     })
