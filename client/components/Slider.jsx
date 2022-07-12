@@ -1,6 +1,5 @@
 import React from "react";
 import {useState, useEffect} from 'react';
-import { javascript } from "webpack";
 
 import Poster from './Poster.jsx'
 
@@ -21,13 +20,13 @@ const Slider = ({type, qty}) => {
 
   useEffect(() => {
     // getMovies()
+    fetch('/imdb')
+      .then(data => data.json())
+      .then(formattedData => {
+        popularMoviesList = formattedData.items
+        setMovies(movies = popularMoviesList.slice(0,qty))
+      })
   }, [])
-  // fetch('/imdb')
-  //   .then(data => data.json())
-  //   .then(formattedData => {
-  //     popularMoviesList = formattedData.items
-  //     setMovies(movies = popularMoviesList.slice(0,qty))
-  //   })
   
   if (type === 'poster') {
     const row = []
