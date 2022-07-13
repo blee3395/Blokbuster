@@ -4,6 +4,14 @@ const imdbapiController = require('../controllers/imdbapiController');
 
 const router = express.Router();
 
+router.get('/:id', 
+  imdbapiController.getMovie,
+  (req, res) => {
+    res.status(200).json(res.locals.movieInfo)
+    res.sendFile(path.resolve(__dirname, ''))
+  }
+)
+
 router.get('/',
   imdbapiController.getPopularMovies,
   (req, res) => {

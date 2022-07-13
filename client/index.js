@@ -4,6 +4,20 @@ import App from './components/App.jsx'
 
 import styles from './stylesheets/styles.css';
 
+const search = document.querySelector('input')
+search.addEventListener('focus', () => {
+  search.style.color = 'black'
+  if (search.value === 'Looking for a fine piece of art...') {
+    search.value ='';
+  } 
+})
+search.addEventListener('blur', () => {
+  search.style.color = 'rgb(131, 131, 131)'
+  if (search.value === '') {
+    search.value = 'Looking for a fine piece of art...'
+  } 
+})
+
 render(
   <App />, 
   document.getElementById('root')
