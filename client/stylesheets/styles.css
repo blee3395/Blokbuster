@@ -1,0 +1,168 @@
+body {
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu,
+    Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    background: linear-gradient(180deg,rgb(214, 214, 214) 70%,rgb(169, 169, 169)85%,  rgb(140, 140, 140) 90%, rgba(0, 25, 46, 0.723));
+  color: black;
+  margin: 0%;
+}
+
+.slider {
+  /* border: 1px solid black; */
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+
+  padding-bottom: 5%;
+}
+
+.poster {
+  /* border: 1px solid black; */
+  
+  padding: 0%;
+  width: 20%;
+  
+  text-align:center
+}
+
+.poster > img {
+  width: 85%;
+  border-radius: 4%;
+  box-shadow: 0px 4px 6px rgb(87, 87, 87);
+}
+
+.poster > img:hover {
+  transform: scale(1.1);
+  transition-duration: 400ms;
+  box-shadow: 0px 10px 20px rgb(16, 23, 32);
+}
+
+.poster > img:not(:hover) {
+  transition-duration: 800ms;
+}
+
+.header {
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.615) 0%, rgba(0, 0, 0, 0.199) 30%, rgba(0,0,0,0) 80%);
+  width: 100%;
+  height: 66px;
+
+  display: flex;
+  flex-direction: row;
+
+}
+
+h2 {
+  margin-left: 1.5%;
+}
+
+input {
+  border: none;
+  border-radius: 30px;
+  height: 30px;
+  width: 20em;
+  padding-left: 12px;
+  margin-right: 20px;
+  box-shadow: 0px 2px 4px gray;
+  background-color: rgb(240, 240, 240);
+}
+
+input:focus-within {
+  outline: none;
+  box-shadow: 0px 4px 4px rgb(113, 113, 113);
+  transition-duration: 300ms;
+}
+
+.leftBtn > h1 {
+  margin-left: 8px;
+  /* color: rgb(214, 214, 214); */
+}
+
+.leftBtn > h1:hover {
+  color: rgb(16, 26, 35);
+  transform: scale(105%);
+  transition-duration: 300ms;
+  cursor: pointer;
+}
+
+.leftBtn > h1:not(:hover) {
+  transition-duration: 600ms;
+}
+  
+.logoBtn {
+  filter: invert(100%);
+  background-color:rgba(0, 255, 255, 0);
+  border: none;
+
+  width: 40px;
+  height: auto;
+
+  margin-right: 14px;
+
+}
+
+.logoBtn:hover {
+  transition-duration: 300ms;
+  
+  transform: scale(1.05) rotate(-10deg);
+  
+  cursor: pointer;
+}
+
+.logoBtn:not(:hover) {
+  transition-duration: 600ms;
+}
+
+.textBtn {
+  background-color:rgba(0, 255, 255, 0);
+  border: none;
+
+  color: rgba(0, 0, 0, 0.9);
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.textBtn:hover {
+  transition-duration: 200ms;
+  
+  color: rgb(243, 243, 243,);
+
+  filter: brightness(120);
+  
+  cursor: pointer;
+}
+
+.leftBtn {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: left;
+
+  padding: 16px 14px;
+}
+
+.rightBtn {
+  margin-left: auto;
+  margin-right: 3%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+button.imgBtn {
+  background-color: rgba(245, 245, 220, 0);
+
+  border: none;
+}
+
+img.imgBtn {
+  filter: invert(100%) brightness(85%);
+}
+
+img.imgBtn:hover {
+  transition-duration: 200ms;
+  
+  filter: invert(100%) brightness(110%);
+
+  cursor: pointer;
+}

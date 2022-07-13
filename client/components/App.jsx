@@ -7,10 +7,11 @@ const App = (props) => {
 
   return (
     <div className='router'>
-        <Slider 
-          type = {'poster'} 
-          qty = {5}
-        />
+      <h2>Top Movies</h2>
+      <Slider 
+        type = {'poster'} 
+        qty = {5}
+      />
     </div>
   )
 

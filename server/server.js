@@ -10,7 +10,7 @@ const imdbRouter = require('./routes/imdb.js')
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }))
-app.use(express.static(path.resolve(__dirname, '../client')));
+app.use(express.static(path.resolve(__dirname, '../client/assets')));
 
 
 // Define route handlers

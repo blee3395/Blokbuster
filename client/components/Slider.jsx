@@ -25,27 +25,20 @@ const Slider = ({type, qty}) => {
 
   const [movies, setMovies] = useState(movieArr);
 
-  async function getMovies() {
-    try {
-      const data = await fetch('/imdb')
-      const formattedData = await data.json()
-      const popularMoviesList = formattedData
-      // setMovies(movies.push(...popularMoviesList.slice(0,qty)))
-      setMovies(arr => {
-        for (let i = 0; i < arr.length; i++) {
-          arr[i] = popularMoviesList[i]
-        }
-        return arr;
-      })
-      console.log('Aftre movies: ', movies)
-    }
-    catch(error) {
-      console.log('Error in Slider UseEffect: ', error)
-    }
-  }
-  
   useEffect(() => {
-    getMovies()
+    fetch('/imdb')
+      .then(data => data.json())
+      .then(formattedData => {
+        const newArr = [...movieArr]
+        for (let i = 0; i < movieArr.length; i++) {
+          newArr[i] = formattedData[i]
+        }
+        setMovies(newArr)
+        console.log('Movies re-rendered: ', movies)
+      })
+      .catch(error => {
+        console.log('Error in Slider UseEffect: ', error)
+      })
   }, [])
   
   if (type === 'poster') {    
@@ -57,7 +50,6 @@ const Slider = ({type, qty}) => {
                 id={i}
               />)
     }
-
     return <div className="slider">{row}</div>    
   }
 }
