@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-const Poster = ({movie}) => {
+const Poster = ({movie, id}) => {
+  console.log('Poster: ', movie, id)
   return (
     <div className='poster'>
-      <Link to={movie.image}>
-        <img src={movie.image}></img>
-      </Link>
+        <img src={movie[id].image}></img>
     </div>
   )
 }
