@@ -52,8 +52,51 @@ body {
 
 }
 
-h2 {
+.background {
+  position: relative;
+}
+
+img.poster-background {
+  position: absolute;
+  width: 100%;
+}
+
+h2, h4 {
   margin-left: 1.5%;
+}
+
+.moviePage {
+  position:absolute;
+  color: rgb(214, 214, 214);
+}
+
+h2.moviePage {
+  bottom: -20em;
+}
+
+h4.moviePage {
+  bottom: -32em;
+  margin-left:2.5%
+}
+
+button.add {
+  position: absolute;
+  background: none;
+  border: none;
+}
+
+button.add > svg {
+  filter: invert(100%) sepia(0%) saturate(1861%) hue-rotate(203deg) brightness(107%) contrast(68%);
+}
+
+button.add > svg:hover {
+  transform: scale(105%);
+  transition-duration: 300ms;
+  cursor: pointer;
+}
+
+button.add > svg:not(:hover) {
+  transition-duration: 450ms;
 }
 
 input {
