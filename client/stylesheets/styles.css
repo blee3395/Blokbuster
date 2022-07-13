@@ -26,19 +26,19 @@ body {
   text-align:center
 }
 
-.poster > img {
+.poster > a > img {
   width: 85%;
   border-radius: 4%;
   box-shadow: 0px 4px 6px rgb(87, 87, 87);
 }
 
-.poster > img:hover {
+.poster > a > img:hover {
   transform: scale(1.1);
   transition-duration: 400ms;
   box-shadow: 0px 10px 20px rgb(16, 23, 32);
 }
 
-.poster > img:not(:hover) {
+.poster > a > img:not(:hover) {
   transition-duration: 800ms;
 }
 

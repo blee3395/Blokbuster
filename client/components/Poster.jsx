@@ -10,7 +10,9 @@ const Poster = ({movie, id}) => {
   console.log('Poster: ', movie[id])  
   return (
     <div className='poster'>
+      <Link to='/movie'>
         <img src={movie[id].image} onClick={() => handleClick}></img>
+      </Link>
     </div>
   )
 }
