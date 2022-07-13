@@ -1,5 +1,4 @@
-import { parseJsonConfigFileContent } from 'typescript';
-
+const e = require('express');
 const profile = require('../models/profile');
 
 const favoriteController = {}
@@ -20,20 +19,43 @@ favoriteController.getFavorites = (req, res, next) => {
 }
 
 favoriteController.addMovie = (req, res, next) => {
-  console.log('req.body: ', req.body)
+  // console.log('req.body: ', req.body)
+  const { id, title, year, image, plot, directors, stars, genres, imDbRating, contentRating } = req.body;
   
-  profile.create()
+  profile.Favorite.find({id:id})
     .then(data => {
-
-    })
-    .catch(err => {
-      return next({
-        log: 'favoriteController.addMovie error',
-        status: 400,
-        message: { err: 'Cannot movie' },
-      })
+      if (data.length >= 1) {
+        return next({
+          log: 'favoriteController.addMovie error',
+          status: 400,
+          message: { err: 'Movie already exists in favorites' },
+        })
+      } else {
+        profile.Favorite.create({
+                                  id: id, 
+                                  title: title, 
+                                  year: year, 
+                                  image: image,
+                                  plot: plot,
+                                  directors: directors,
+                                  stars: stars,
+                                  genres: genres,
+                                  imDbRating: imDbRating,
+                                  contentRating: contentRating
+                                })
+          .then(data => {
+            return next()
+          })
+          .catch(err => {
+            return next({
+              log: 'favoriteController.addMovie error',
+              status: 400,
+              message: { err: 'Cannot add movie' },
+            })
+          })
+      }
     })
 
 }
 
-export default favoriteController;
+module.exports = favoriteController;

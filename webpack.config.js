@@ -14,7 +14,8 @@ module.exports = {
         publicPath: '/'
     },
     proxy: {
-      '/imdb': 'http://localhost:3000'
+      '/imdb': 'http://localhost:3000',
+      '/profile': 'http://localhost:3000'
     },
     compress: true,
     port: 8080,

@@ -10,7 +10,7 @@ mongoose.connect(MONGO_URI, {
   dbName: 'blokbuster'
 })
   .then(() => console.log('Connected to Mongo DB.'))
-  .catch(err => console.log(err));
+  .catch(err => console.log('Error connecting to MongoDB :', err));
 
 const Schema = mongoose.Schema;
 
