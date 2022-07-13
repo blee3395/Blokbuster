@@ -18,6 +18,16 @@ search.addEventListener('blur', () => {
   } 
 })
 
+const blokbuster = document.querySelector('h1');
+blokbuster.addEventListener('click', () => {
+  if (window.location !== '/') window.open('/', '_self');
+})
+
+const logoBtn = document.querySelector('button.logoBtn');
+logoBtn.addEventListener('click', () => {
+  if (window.location !== '/') window.open('/', '_self');
+})
+
 render(
   <App />, 
   document.getElementById('root')
