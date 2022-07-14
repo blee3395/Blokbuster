@@ -4,10 +4,16 @@ body {
     background: linear-gradient(180deg,rgb(214, 214, 214) 70%,rgb(169, 169, 169)85%,  rgb(140, 140, 140) 90%, rgba(0, 25, 46, 0.723));
   color: black;
   margin: 0%;
+  height: 100%;
 }
 
 .background > .info, .background > .rating, .background > .poster {
   position: absolute;
+}
+
+.similar {
+  position: relative;
+  margin-top: 200px;
 }
 
 .background > .info {
@@ -17,6 +23,11 @@ body {
 
 .bold {
   font-weight: 700;
+}
+
+.background > .similar {
+  /* margin-left: 12px; */
+  top: 720px
 }
 
 .background > .poster {

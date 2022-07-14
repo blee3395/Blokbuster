@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 //
 function handleClick(movie, index) {
   //do something
-  // console.log('id ', movie[index].id)
+  console.log('id ', movie[index].id)
 }
 
 const Poster = ({movie, index}) => {
