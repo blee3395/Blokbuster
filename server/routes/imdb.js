@@ -21,7 +21,6 @@ router.get('/:id',
 router.get('/',
   imdbapiController.getPopularMovies,
   (req, res) => {
-    // console.log('data ', res.locals.popularMovies)
     return res.status(200).json(res.locals.popularMovies);
   }
 )

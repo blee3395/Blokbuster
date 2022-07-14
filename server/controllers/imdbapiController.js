@@ -4,6 +4,7 @@ const top250 = require('./top250movies.json')
 const popMovies = require('./popularMovies.json')
 const inception = require('./inception.json')
 const thorSearch = require('./thorSearch.json')
+const shrekSearch = require('./shrekSearch.json');
 
 const imdbapiController = {};
 
@@ -14,7 +15,8 @@ imdbapiController.getPopularMovies = (req, res, next) => {
   // console.log(testFile.items);
 
   // Offline testing
-  res.locals.popularMovies = top250.items
+  // res.locals.popularMovies = top250.items
+  res.locals.popularMovies = shrekSearch.results;
   return next();
   
   // fetch(`https://imdb-api.com/en/API/MostPopularMovies/${apiKey}`)
@@ -58,8 +60,6 @@ imdbapiController.getMovie = (req, res, next) => {
 
 imdbapiController.findMovies = (req, res, next) => {
   const { input } = req.params;
-
-  
 
   fetch(`https://imdb-api.com/en/API/SearchMovie/${apiKey}/${input}`)
     .then(data => data.json())
