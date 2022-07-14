@@ -32,7 +32,13 @@ const searchBtn = document.querySelector('.search');
 searchBtn.addEventListener('click', () => {
   if (search.value !== 'Looking for a fine piece of art...') {
     const value = search.value;
-    
+    console.log('Searching for : ', value)
+    fetch(`/imdb/search/${value}`)
+      .then(data => data.json())
+      .then(movieResults => {
+        console.log('Search bar results: ', movieResults)
+      })
+      .catch(err => console.log('Error in search fetch request'))
   }
 
 })

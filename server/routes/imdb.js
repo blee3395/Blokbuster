@@ -4,6 +4,13 @@ const imdbapiController = require('../controllers/imdbapiController');
 
 const router = express.Router();
 
+router.get('/search/:input',
+  imdbapiController.findMovies,
+  (req, res) => {
+    res.status(200).json(res.locals.movieResults);
+  }
+)
+
 router.get('/:id', 
   imdbapiController.getMovie,
   (req, res) => {
