@@ -34,7 +34,6 @@ imdbapiController.getPopularMovies = (req, res, next) => {
 
 imdbapiController.getMovie = (req, res, next) => {
   
-
   const {id} = req.params;
 
   // Offline testing
@@ -44,7 +43,6 @@ imdbapiController.getMovie = (req, res, next) => {
   fetch(`https://imdb-api.com/en/API/Title/${apiKey}/${id}`)
     .then(data => data.json())
     .then(formattedData => {
-      console.log('from api: ', formattedData)
       res.locals.movieInfo = formattedData
       return next()
     })
