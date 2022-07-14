@@ -71,10 +71,12 @@ button.search > svg:not(:hover) {
 
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   align-items: center;
   width: 100%;
 
   padding-bottom: 5%;
+  
 }
 
 .poster {

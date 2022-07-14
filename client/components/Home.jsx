@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Slider from './Slider.jsx'
+import FavSlider from './FavSlider.jsx';
 
 const Home = (props) => {
 
@@ -10,6 +11,12 @@ const Home = (props) => {
         type = {'poster'} 
         qty = {5}
       />
+      <h2>My Favorites</h2>
+      <FavSlider 
+        qty = {10}
+      />
+
+
     </div>
   )
 
