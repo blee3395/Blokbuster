@@ -51,6 +51,11 @@ searchBtn.addEventListener('click', () => {
 
 })
 
+const profile = document.querySelector('button.profile')
+profile.addEventListener('click', () => {
+  if (window.location !== '/profile') window.open('/profile', '_self');
+})
+
 render(
   <App />, 
   document.getElementById('root')
