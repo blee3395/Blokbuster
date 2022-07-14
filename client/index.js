@@ -28,6 +28,15 @@ logoBtn.addEventListener('click', () => {
   if (window.location !== '/') window.open('/', '_self');
 })
 
+const searchBtn = document.querySelector('.search');
+searchBtn.addEventListener('click', () => {
+  if (search.value !== 'Looking for a fine piece of art...') {
+    const value = search.value;
+    
+  }
+
+})
+
 render(
   <App />, 
   document.getElementById('root')

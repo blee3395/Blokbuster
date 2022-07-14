@@ -47,7 +47,7 @@ const Slider = ({type, qty}) => {
     for (let i = 0; i < qty; i++) {
       row.push(<Poster 
                 movie={movies} 
-                id={i}
+                index={i}
               />)
     }
     return <div className="slider">{row}</div>    

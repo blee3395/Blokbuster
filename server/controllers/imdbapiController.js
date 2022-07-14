@@ -1,5 +1,6 @@
 const fetch = require('node-fetch');
 
+const top250 = require('./top250movies.json')
 const popMovies = require('./popularMovies.json')
 const inception = require('./inception.json')
 
@@ -12,7 +13,7 @@ imdbapiController.getPopularMovies = (req, res, next) => {
   // console.log(testFile.items);
 
   // Offline testing
-  res.locals.popularMovies = popMovies.items
+  res.locals.popularMovies = top250.items
   return next();
   
   // fetch(`https://imdb-api.com/en/API/MostPopularMovies/${apiKey}`)
@@ -32,25 +33,28 @@ imdbapiController.getPopularMovies = (req, res, next) => {
 }
 
 imdbapiController.getMovie = (req, res, next) => {
+  
+
   const {id} = req.params;
 
   // Offline testing
-  res.locals.movieInfo = inception;
-  return next()
+  // res.locals.movieInfo = inception;
+  // return next()
 
-  // fetch(`https://imdb-api.com/en/API/Title/${apiKey}/${id}`)
-  //   .then(data => data.json())
-  //   .then(formattedData => {
-  //     res.locals.movieInfo = formattedData
-  //     return next()
-  //   })
-  //   .catch(error => {
-  //     return next({
-  //       log: 'imdbapiController.getMovie error',
-  //       status: 400,
-  //       message: { err: 'Cannot get the movie requested' },
-  //     })
-  //   })
+  fetch(`https://imdb-api.com/en/API/Title/${apiKey}/${id}`)
+    .then(data => data.json())
+    .then(formattedData => {
+      console.log('from api: ', formattedData)
+      res.locals.movieInfo = formattedData
+      return next()
+    })
+    .catch(error => {
+      return next({
+        log: 'imdbapiController.getMovie error',
+        status: 400,
+        message: { err: 'Cannot get the movie requested' },
+      })
+    })
 }
 
 

@@ -6,6 +6,55 @@ body {
   margin: 0%;
 }
 
+.background > .info, .background > .rating, .background > .poster {
+  position: absolute;
+}
+
+.background > .info {
+  margin-left: 12px;
+  padding-right: 40%;
+}
+
+.bold {
+  font-weight: 700;
+}
+
+.background > .poster {
+  bottom: 108px;
+  left: 12px;
+  box-shadow: 0px 0px 4px rgb(119, 119, 119);
+  border-radius: 12px;
+}
+
+.background > .rating {
+  bottom:-24px;
+  right: 120px;
+  color: rgb(214, 214, 214);
+  font-size: 32px;
+}
+
+button.search {
+  background: none;
+  border: none;
+  margin-right: 8px;
+}
+
+button.search > svg {
+  filter: invert(100%) sepia(0%) saturate(1861%) hue-rotate(203deg) brightness(107%) contrast(68%);
+}
+
+button.search > svg:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+  transition-duration: 300ms;
+  filter: invert(100%) sepia(0%) saturate(1861%) hue-rotate(203deg) brightness(150%) contrast(68%);
+
+}
+
+button.search > svg:not(:hover) {
+  transition-duration: 450ms;
+}
+
 .slider {
   /* border: 1px solid black; */
 
@@ -58,10 +107,12 @@ body {
 
 img.poster-background {
   width: 100%;
+  box-shadow: 0px 0px 16px rgb(0, 0, 0);
 }
 
 h2, h4 {
   margin-left: 1.5%;
+  z-index: 1;
 }
 
 .moviePage {
@@ -109,7 +160,7 @@ input {
   height: 30px;
   width: 20em;
   padding-left: 12px;
-  margin-right: 20px;
+  margin-right: 8px;
   box-shadow: 0px 2px 4px gray;
   background-color: rgb(240, 240, 240);
 }

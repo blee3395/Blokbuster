@@ -1,11 +1,9 @@
 import React, { Component, useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
-const Movie = () => {
-  // const location = useLocation();
-  // // const {movieID} = location.state
-  // console.log('location state', location.state)
-
+const Movie = (state) => {
+  const location = useLocation();
+  const { id } = location.state
   
   const movieTemplate = {
     "id": "tt10648342",
@@ -333,7 +331,7 @@ const Movie = () => {
   const [movie, setMovie] = useState(movieTemplate)
 
   useEffect(() => {
-    fetch(`/imdb/${movie.id}`)
+    fetch(`/imdb/${id}`)
       .then(data => data.json())
       .then(formattedData => {
         console.log('this shoudl be inception: ', formattedData)
@@ -356,21 +354,31 @@ const Movie = () => {
       })
   }
 
+  let banner = (movie.posters) ? movie.posters.backdrops[0].link : 'https://c.tenor.com/VMhUw2mOPEkAAAAd/nicole-kidman-theatre.gif';
+
   return (
     <div className='background'>
       <img 
         className='poster-background' 
         style={{width: '100%'}}
-        src={movie.posters.backdrops[0].link}>
+        src={banner}>
       </img>
       <h2 className='moviePage'>{movie.title}</h2>
       <h4 className='moviePage'>{movie.year}</h4>
+      <h4 className='rating'>Rating: {movie.contentRating}</h4>
+      <img className='poster' src={movie.image}/>
       <button className='add' onClick={() => handleClick()}>
         <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" className="bi bi-plus-circle" viewBox="0 0 16 16">
           <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
           <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
         </svg>
       </button>
+      <div className='info'>
+        <p><span className='bold'>Genre:</span> {movie.genres}</p>
+        <p><span className='bold'>Director:</span> {movie.directors}</p>
+        <p><span className='bold'>Stars:</span> {movie.stars}</p>
+        <p><span className='bold'>Plot:</span> {movie.plot}</p>
+      </div>
     </div>
   )
 
