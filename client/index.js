@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { render } from 'react-dom';
-import App from './components/App.jsx'
+import App from './components/App.jsx';
+import Results from './components/Results.jsx';
 
 import styles from './stylesheets/styles.css';
 
@@ -37,6 +38,13 @@ searchBtn.addEventListener('click', () => {
       .then(data => data.json())
       .then(movieResults => {
         console.log('Search bar results: ', movieResults)
+        // render (
+        //   <Results 
+        //     movieResults={movieResults} 
+        //     qty={5}
+        //   />,
+        //   document.getElementById('root')
+        // )
       })
       .catch(err => console.log('Error in search fetch request'))
   }
