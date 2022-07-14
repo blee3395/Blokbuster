@@ -228,15 +228,24 @@ input:not(:focus-within) {
 
 }
 
-.logoBtn:hover {
+.logoBtn:hover  {
   transition-duration: 300ms;
   
-  transform: scale(1.05) rotate(-10deg);
+  transform: scale(1.1) rotate(-10deg);
   
   cursor: pointer;
 }
 
-.logoBtn:not(:hover) {
+button.profile:hover  {
+  transition-duration: 300ms;
+  
+  transform: scale(1.2) rotate(10deg);
+
+  cursor: pointer;
+}
+
+
+.logoBtn:not(:hover), button.profile:not(:hover)  {
   transition-duration: 600ms;
 }
 

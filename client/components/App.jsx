@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-d
 import Home from './Home.jsx';
 import Movie from './Movie.jsx';
 import Profile from './Profile.jsx';
-
+import Results from './Results.jsx';
 
 const App = (props) => {
 
@@ -14,7 +14,7 @@ const App = (props) => {
         <Route exact path='/' component={Home} />
         <Route path='/movie' component={Movie}/>
         <Route path='/profile' component={Profile}/>
-        
+        <Route path='/results' component={Results}/>
 
         <Redirect to='/' />  
       </Switch>

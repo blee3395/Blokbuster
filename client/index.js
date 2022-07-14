@@ -29,6 +29,8 @@ logoBtn.addEventListener('click', () => {
   if (window.location !== '/') window.open('/', '_self');
 })
 
+let movieSearchResults;
+
 const searchBtn = document.querySelector('.search');
 searchBtn.addEventListener('click', () => {
   if (search.value !== 'Looking for a fine piece of art...') {
@@ -38,13 +40,15 @@ searchBtn.addEventListener('click', () => {
       .then(data => data.json())
       .then(movieResults => {
         console.log('Search bar results: ', movieResults)
-        // render (
-        //   <Results 
-        //     movieResults={movieResults} 
-        //     qty={5}
-        //   />,
-        //   document.getElementById('root')
-        // )
+        movieSearchResults = movieResults;
+        // if (window.location !== '/results') window.open('/results', '_self');
+        render (
+          <Results 
+            movieResults={movieResults} 
+            qty={5}
+          />,
+          document.getElementById('root')
+        )
       })
       .catch(err => console.log('Error in search fetch request'))
   }
