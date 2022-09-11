@@ -1,6 +1,10 @@
 import React, {Component} from 'react';
 import { render } from 'react-dom';
-import App from './components/App.jsx'
+import App from './components/App.jsx';
+import Results from './components/Results.jsx';
+import Profile from './components/Profile.jsx';
+import { store } from './store.ts'
+import { Provider } from 'react-redux'
 
 import styles from './stylesheets/styles.css';
 
@@ -28,16 +32,44 @@ logoBtn.addEventListener('click', () => {
   if (window.location !== '/') window.open('/', '_self');
 })
 
+let movieSearchResults;
+
 const searchBtn = document.querySelector('.search');
 searchBtn.addEventListener('click', () => {
   if (search.value !== 'Looking for a fine piece of art...') {
     const value = search.value;
-    
+    console.log('Searching for : ', value)
+    fetch(`/imdb/search/${value}`)
+      .then(data => data.json())
+      .then(movieResults => {
+        console.log('Search bar results: ', movieResults)
+        movieSearchResults = movieResults;
+        // if (window.location !== '/results') window.open('/results', '_self');
+        render (
+          <Results 
+            movieResults={movieResults} 
+            qty={5}
+          />,
+          document.getElementById('root')
+        )
+      })
+      .catch(err => console.log('Error in search fetch request'))
   }
 
 })
 
+const profile = document.querySelector('button.profile')
+profile.addEventListener('click', () => {
+  // if (window.location !== '/profile') window.open('/profile', '_self');
+  render (
+    <Profile/>,
+    document.getElementById('root')
+  )
+})
+
 render(
-  <App />, 
+  <Provider store={store}>
+    <App />
+  </Provider>,
   document.getElementById('root')
 );

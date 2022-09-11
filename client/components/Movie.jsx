@@ -1,6 +1,8 @@
 import React, { Component, useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
+import SimilarTitles from './SimilarTitles.jsx';
+
 const Movie = (state) => {
   const location = useLocation();
   const { id } = location.state
@@ -259,24 +261,18 @@ const Movie = (state) => {
         "image": "https://imdb-api.com/images/original/MV5BMjMyNDkzMzI1OF5BMl5BanBnXkFtZTgwODcxODg5MjI@._V1_Ratio0.6763_AL_.jpg",
         "imDbRating": "7.9"
       },
-      {
-        "id": "tt9253284",
-        "title": "Andor",
-        "image": "https://imdb-api.com/images/original/MV5BYzFjN2JlMWMtMmU0ZC00ZjQ3LWJlZmYtMDg3YWFkN2MxYWZkXkEyXkFqcGdeQXVyODk4OTc3MTY@._V1_Ratio0.6763_AL_.jpg",
-        "imDbRating": ""
-      },
-      {
-        "id": "tt9603212",
-        "title": "Mission: Impossible - Dead Reckoning - Part One",
-        "image": "https://imdb-api.com/images/original/MV5BZmM1MmI1MjctOTkyMi00MjZhLWEwN2MtYjEwNGRjNmUxZmVjXkEyXkFqcGdeQXVyODk4OTc3MTY@._V1_Ratio0.6763_AL_.jpg",
-        "imDbRating": ""
-      },
-      {
-        "id": "tt9114286",
-        "title": "Black Panther: Wakanda Forever",
-        "image": "https://imdb-api.com/images/original/MV5BYjJlMjBmYzUtY2E3MC00OWI1LWE1YmUtOTdmM2IyMTQyZDBjXkEyXkFqcGdeQXVyODk4OTc3MTY@._V1_Ratio0.6763_AL_.jpg",
-        "imDbRating": ""
-      },
+      // {
+      //   "id": "tt9603212",
+      //   "title": "Mission: Impossible - Dead Reckoning - Part One",
+      //   "image": "https://imdb-api.com/images/original/MV5BZmM1MmI1MjctOTkyMi00MjZhLWEwN2MtYjEwNGRjNmUxZmVjXkEyXkFqcGdeQXVyODk4OTc3MTY@._V1_Ratio0.6763_AL_.jpg",
+      //   "imDbRating": ""
+      // },
+      // {
+      //   "id": "tt9114286",
+      //   "title": "Black Panther: Wakanda Forever",
+      //   "image": "https://imdb-api.com/images/original/MV5BYjJlMjBmYzUtY2E3MC00OWI1LWE1YmUtOTdmM2IyMTQyZDBjXkEyXkFqcGdeQXVyODk4OTc3MTY@._V1_Ratio0.6763_AL_.jpg",
+      //   "imDbRating": ""
+      // },
       {
         "id": "tt0800369",
         "title": "Thor",
@@ -295,47 +291,48 @@ const Movie = (state) => {
         "image": "https://imdb-api.com/images/original/MV5BOWY4MmFiY2QtMzE1YS00NTg1LWIwOTQtYTI4ZGUzNWIxNTVmXkEyXkFqcGdeQXVyODk4OTc3MTY@._V1_Ratio0.6763_AL_.jpg",
         "imDbRating": ""
       },
-      {
-        "id": "tt6791350",
-        "title": "Guardians of the Galaxy Vol. 3",
-        "image": "https://imdb-api.com/images/original/MV5BMWM3ZWNlMjgtODZjMi00YTAwLWJhZTktMTM4NTgyMjE0NjMwXkEyXkFqcGdeQXVyNTE1NjY5Mg@@._V1_Ratio0.6763_AL_.jpg",
-        "imDbRating": ""
-      },
+      // {
+      //   "id": "tt6791350",
+      //   "title": "Guardians of the Galaxy Vol. 3",
+      //   "image": "https://imdb-api.com/images/original/MV5BMWM3ZWNlMjgtODZjMi00YTAwLWJhZTktMTM4NTgyMjE0NjMwXkEyXkFqcGdeQXVyNTE1NjY5Mg@@._V1_Ratio0.6763_AL_.jpg",
+      //   "imDbRating": ""
+      // },
       {
         "id": "tt6710474",
         "title": "Everything Everywhere All at Once",
         "image": "https://imdb-api.com/images/original/MV5BYTdiOTIyZTQtNmQ1OS00NjZlLWIyMTgtYzk5Y2M3ZDVmMDk1XkEyXkFqcGdeQXVyMTAzMDg4NzU0._V1_Ratio0.6957_AL_.jpg",
         "imDbRating": "8.3"
       },
-      {
-        "id": "tt10278918",
-        "title": "Willow",
-        "image": "https://imdb-api.com/images/original/MV5BMjcwYjMwYTUtYjViNS00ODE1LTk3YmYtNjE0OGEwNTU0Zjk2XkEyXkFqcGdeQXVyMTEzMTI1Mjk3._V1_Ratio0.6763_AL_.jpg",
-        "imDbRating": ""
-      },
-      {
-        "id": "tt13833978",
-        "title": "The Lincoln Lawyer",
-        "image": "https://imdb-api.com/images/original/MV5BYmE0YjNkZjUtZmM5YS00NTFlLWJjOWUtODFiNzkwM2Q3OWJhXkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_Ratio0.6763_AL_.jpg",
-        "imDbRating": "7.7"
-      },
-      {
-        "id": "tt9561862",
-        "title": "Love, Death & Robots",
-        "image": "https://imdb-api.com/images/original/MV5BYTNiYTNkNTAtYzE3ZS00ZDQ1LWEwZTYtZjI1NzYzMWJjY2U4XkEyXkFqcGdeQXVyODk4OTc3MTY@._V1_Ratio0.6763_AL_.jpg",
-        "imDbRating": "8.4"
-      }
+      // {
+      //   "id": "tt10278918",
+      //   "title": "Willow",
+      //   "image": "https://imdb-api.com/images/original/MV5BMjcwYjMwYTUtYjViNS00ODE1LTk3YmYtNjE0OGEwNTU0Zjk2XkEyXkFqcGdeQXVyMTEzMTI1Mjk3._V1_Ratio0.6763_AL_.jpg",
+      //   "imDbRating": ""
+      // },
+      // {
+      //   "id": "tt13833978",
+      //   "title": "The Lincoln Lawyer",
+      //   "image": "https://imdb-api.com/images/original/MV5BYmE0YjNkZjUtZmM5YS00NTFlLWJjOWUtODFiNzkwM2Q3OWJhXkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_Ratio0.6763_AL_.jpg",
+      //   "imDbRating": "7.7"
+      // },
+      // {
+      //   "id": "tt9561862",
+      //   "title": "Love, Death & Robots",
+      //   "image": "https://imdb-api.com/images/original/MV5BYTNiYTNkNTAtYzE3ZS00ZDQ1LWEwZTYtZjI1NzYzMWJjY2U4XkEyXkFqcGdeQXVyODk4OTc3MTY@._V1_Ratio0.6763_AL_.jpg",
+      //   "imDbRating": "8.4"
+      // }
     ],
   }
 
   const [movie, setMovie] = useState(movieTemplate)
 
   useEffect(() => {
+    console.log('another call to /movie id ', id)
     fetch(`/imdb/${id}`)
       .then(data => data.json())
       .then(formattedData => {
-        console.log('this shoudl be inception: ', formattedData)
         setMovie(formattedData)
+        console.log('similars before: ', movie.similars)
       })
   }, [])
 
@@ -357,29 +354,38 @@ const Movie = (state) => {
   let banner = (movie.posters) ? movie.posters.backdrops[0].link : 'https://c.tenor.com/VMhUw2mOPEkAAAAd/nicole-kidman-theatre.gif';
 
   return (
-    <div className='background'>
-      <img 
-        className='poster-background' 
-        style={{width: '100%'}}
-        src={banner}>
-      </img>
-      <h2 className='moviePage'>{movie.title}</h2>
-      <h4 className='moviePage'>{movie.year}</h4>
-      <h4 className='rating'>Rating: {movie.contentRating}</h4>
-      <img className='poster' src={movie.image}/>
-      <button className='add' onClick={() => handleClick()}>
-        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" className="bi bi-plus-circle" viewBox="0 0 16 16">
-          <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-          <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
-        </svg>
-      </button>
-      <div className='info'>
-        <p><span className='bold'>Genre:</span> {movie.genres}</p>
-        <p><span className='bold'>Director:</span> {movie.directors}</p>
-        <p><span className='bold'>Stars:</span> {movie.stars}</p>
-        <p><span className='bold'>Plot:</span> {movie.plot}</p>
+    <>
+      <div className='background'>
+        <img 
+          className='poster-background' 
+          style={{width: '100%'}}
+          src={banner}>
+        </img>
+        <h2 className='moviePage'>{movie.title}</h2>
+        <h4 className='moviePage'>{movie.year}</h4>
+        <h4 className='rating'>Rating: {movie.contentRating}</h4>
+        <img className='poster' src={movie.image}/>
+        <button className='add' onClick={() => handleClick()}>
+          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" className="bi bi-plus-circle" viewBox="0 0 16 16">
+            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+            <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+          </svg>
+        </button>
+        <div className='info'>
+          <p><span className='bold'>Genre:</span> {movie.genres}</p>
+          <p><span className='bold'>Director:</span> {movie.directors}</p>
+          <p><span className='bold'>Stars:</span> {movie.stars}</p>
+          <p><span className='bold'>Plot:</span> {movie.plot}</p>
+        </div>
       </div>
-    </div>
+      <div className='similar'>
+          <h2>Browse Similar Movies</h2>
+          <SimilarTitles
+            moviesArr = {movie.similars}
+            qty = {5}
+          />
+      </div>
+    </>
   )
 
 }

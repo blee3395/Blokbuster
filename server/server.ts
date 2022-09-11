@@ -1,5 +1,7 @@
+import { Request, Response, NextFunction } from 'express';
+
 const path = require('path');
-const express = require('express');
+const express = require('express')
 
 const app = express();
 const PORT = 3000;
@@ -17,10 +19,10 @@ app.use('/imdb', imdbRouter);
 app.use('/profile', favoriteRouter);
 
 // Error handler
-app.use((req,res) => res.status(404).send('Error cannot load the page'));
+app.use((req: Request,res: Response) => res.status(404).send('Error cannot load the page'));
 
 // Global error handler
-app.use((err, req, res, next) => {
+app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
   const defaultErr = {
     log: 'Express error handler caught unknown middleware error',
     status: 500,
