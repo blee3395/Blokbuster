@@ -2,10 +2,10 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu,
     Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
     background: linear-gradient(180deg,rgb(214, 214, 214) 70%,rgb(169, 169, 169)85%,  rgb(140, 140, 140) 90%, rgba(0, 25, 46, 0.723));
-  min-height: 100vh;
+  /* min-height: 100vh; */
   color: black;
   margin: 0%;
-  height: 100%;
+  /* height: 100%; */
 }
 
 .background > .info, .background > .rating, .background > .poster {
@@ -67,6 +67,10 @@ button.search > svg:not(:hover) {
   transition-duration: 450ms;
 }
 
+.container {
+  padding: 2%;
+}
+
 .slider {
   /* border: 1px solid black; */
 
@@ -80,6 +84,12 @@ button.search > svg:not(:hover) {
   margin-left: 1.5%;
 }
 
+.list.slider {
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+}
+
 .poster {
   /* border: 1px solid black; */
   
@@ -87,11 +97,11 @@ button.search > svg:not(:hover) {
   width: 20%;
   /* justify-content: center;
   align-items: center; */
-
+  display: absolute;
   text-align:center
 }
 
-.poster > a > img {
+.poster > a > img, .poster > img {
   width: 85%;
   border-radius: 4%;
   box-shadow: 0px 4px 6px rgb(87, 87, 87);
@@ -149,8 +159,8 @@ h4.moviePage {
 
 button.add {
   position: absolute;
-  right:32px;
-  bottom: 32px;
+  /* right:32px;
+  bottom: 32px; */
   background: none;
   border: none;
 }
@@ -171,8 +181,8 @@ button.add > svg:not(:hover) {
 
 button.poster {
   position:relative;
-  right:36px;
-  bottom:12px;
+  right:15%;
+  bottom: 20%;
   width: 15%;
   height: 15%;
 }
@@ -302,3 +312,67 @@ img.imgBtn:hover {
 
   cursor: pointer;
 }
+
+.container {
+  display: flex;
+  flex-direction: row;
+  border-top: 2px solid gray;
+  border-bottom: 2px solid gray;
+}
+
+.container > .poster {
+  text-align: start;
+  width: 25%;
+}
+
+.container > .poster > img {
+  width: 70%;
+}
+
+.container > .poster > .info {
+  font-size: 16px;
+  margin-top: 2%;
+}
+
+.container > .poster > .info > p {
+  margin-block-start: 0px;
+  margin-block-end: 0px;
+  margin-bottom: 2%;
+}
+
+input#checkbox {
+  width: 24px;
+  height: 24px;
+}
+
+.container > .content {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  margin-left: 2%;
+  font-size: 16px;
+}
+
+.slidecontainer, #checkbox {
+  margin-bottom: 4%;
+}
+
+.content > div.post {
+  text-align: end;
+}
+
+button.post {
+  border: none;
+  background: none;
+}
+
+button.post > svg:hover {
+  transform: scale(1.1);
+  transition-duration: 300ms;
+  cursor: pointer;
+}
+
+button.post > svg:not(:hover) {
+  transition-duration: 600ms;
+}
+

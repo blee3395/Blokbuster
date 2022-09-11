@@ -1,9 +1,9 @@
 import React from "react";
 import {useState, useEffect} from 'react';
 
-import Poster from './Poster.jsx'
+import PosterNoLink from './PosterNoLink.jsx'
 
-const FavSlider = ({qty}) => {
+const ListFavs = ({qty}) => {
   const movieTemplate = {
     "id": "tt10648342",
     "rank": "1",
@@ -36,19 +36,21 @@ const FavSlider = ({qty}) => {
         setMovies(newArr)
       })
       .catch(error => {
-        console.log('Error in FavSlider UseEffect: ', error)
+        console.log('Error in ListFavs UseEffect: ', error)
       })
   }, [])
-  
+    
   const row = []
-  for (let i = 0; i < qty; i++) {
-    row.push(<Poster 
+  for (let i = qty-1; i >= 0; i--) {
+    row.push(<PosterNoLink
               movie={movies} 
               index={i}
             />)
   }
-  return <div className="fav slider">{row}</div>    
+  console.log('row: ',row)
+
+  return <div className="list slider">{row}</div>    
   
 }
 
-export default FavSlider;
+export default ListFavs;

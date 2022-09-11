@@ -2,6 +2,9 @@ import React, {Component} from 'react';
 import { render } from 'react-dom';
 import App from './components/App.jsx';
 import Results from './components/Results.jsx';
+import Profile from './components/Profile.jsx';
+import { store } from './store.ts'
+import { Provider } from 'react-redux'
 
 import styles from './stylesheets/styles.css';
 
@@ -57,10 +60,16 @@ searchBtn.addEventListener('click', () => {
 
 const profile = document.querySelector('button.profile')
 profile.addEventListener('click', () => {
-  if (window.location !== '/profile') window.open('/profile', '_self');
+  // if (window.location !== '/profile') window.open('/profile', '_self');
+  render (
+    <Profile/>,
+    document.getElementById('root')
+  )
 })
 
 render(
-  <App />, 
+  <Provider store={store}>
+    <App />
+  </Provider>,
   document.getElementById('root')
 );
