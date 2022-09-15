@@ -1,28 +1,28 @@
-const express  = require('express');
+import { Router } from 'express';
 
-const imdbapiController = require('../controllers/imdbapiController');
+import { findMovies, getMovie, getPopularMovies } from '../controllers/imdbapiController';
 
-const router = express.Router();
+const router = Router();
 
 router.get('/search/:input',
-  imdbapiController.findMovies,
+  findMovies,
   (req, res) => {
     res.status(200).json(res.locals.movieResults);
   }
 )
 
 router.get('/:id', 
-  imdbapiController.getMovie,
+  getMovie,
   (req, res) => {
     res.status(200).json(res.locals.movieInfo)
   }
 )
 
 router.get('/',
-  imdbapiController.getPopularMovies,
+  getPopularMovies,
   (req, res) => {
     return res.status(200).json(res.locals.popularMovies);
   }
 )
 
-module.exports = router;
+export default router;

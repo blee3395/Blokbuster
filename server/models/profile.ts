@@ -1,16 +1,16 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 const MONGO_URI = 'mongodb+srv://brennan:PhdUzbzNHk06Xxnf@cluster0.s4nh1.mongodb.net/?retryWrites=true&w=majority';
 
 mongoose.connect(MONGO_URI, {
   // options for the connect method to parse the URI
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
+  // useNewUrlParser: true,
+  // useUnifiedTopology: true,
   // sets the name of the DB that our collections are part of
   dbName: 'blokbuster'
 })
   .then(() => console.log('Connected to Mongo DB.'))
-  .catch(err => console.log('Error connecting to MongoDB :', err));
+  .catch((err: Error) => console.log('Error connecting to MongoDB :', err));
 
 const Schema = mongoose.Schema;
 

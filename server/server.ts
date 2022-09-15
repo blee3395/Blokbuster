@@ -1,14 +1,14 @@
 import { Request, Response, NextFunction } from 'express';
 
-const path = require('path');
-const express = require('express')
+import path from 'path';
+import express from 'express';
 
 const app = express();
 const PORT = 3000;
 
 // Require routers
-const imdbRouter = require('./routes/imdb.js');
-const favoriteRouter = require('./routes/favorite.js');
+import imdbRouter from './routes/imdb';
+import favoriteRouter from './routes/favorite';
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }))
