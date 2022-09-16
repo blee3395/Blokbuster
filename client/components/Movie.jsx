@@ -324,16 +324,47 @@ const Movie = (state) => {
     ],
   }
 
-  const [movie, setMovie] = useState(movieTemplate)
+  // const [movie, setMovie] = useState(movieTemplate)
+  const [title, setTitle] = useState(movieTemplate.title)
+  const [year, setYear] = useState(movieTemplate.year)
+  const [contentRating, setContentRating] = useState(movieTemplate.contentRating)
+  const [image, setImage] = useState(movieTemplate.image)
+  const [genres, setGenres] = useState(movieTemplate.genres)
+  const [directors, setDirectors] = useState(movieTemplate.directors)
+  const [stars, setStars] = useState(movieTemplate.stars)
+  const [plot, setPlot] = useState(movieTemplate.plot)
+  const [similars, setSimilars] = useState([])
+  const [banner, setBanner] = useState('https://c.tenor.com/VMhUw2mOPEkAAAAd/nicole-kidman-theatre.gif')
 
-  useEffect(() => {
-    console.log('another call to /movie id ', id)
-    fetch(`/imdb/${id}`)
-      .then(data => data.json())
-      .then(formattedData => {
-        setMovie(formattedData)
-        console.log('similars before: ', movie.similars)
-      })
+
+  useEffect(async() => {
+    const res = await fetch(`/imdb/${id}`)
+    const data = await res.json()    
+    // setMovie(Object.assign(movie, data))
+    setTitle(data.title)
+    setYear(data.year)
+    setContentRating(data.contentRating)
+    setImage(data.image)
+    setGenres(data.genres)
+    setDirectors(data.directors)
+    setStars(data.stars)
+    setPlot(data.plot)
+    
+    let arr = [...similars]
+    console.log(arr === similars)
+    for (let i = 0; i < data.similars.length; i++) {
+      arr[i] = data.similars[i]
+    }
+    console.log(arr)
+    setSimilars(old => [...old, ...data.similars])
+    console.log('setSimilars in movie update:', similars)
+
+
+    if (data.posters) {
+      console.log('new banner: ', data.posters.backdrops[0].link)
+      setBanner(data.posters.backdrops[0].link)
+    }
+
   }, [])
 
   function handleClick() {
@@ -351,7 +382,7 @@ const Movie = (state) => {
       })
   }
 
-  let banner = (movie.posters) ? movie.posters.backdrops[0].link : 'https://c.tenor.com/VMhUw2mOPEkAAAAd/nicole-kidman-theatre.gif';
+  // let banner = (movie.posters) ? movie.posters.backdrops[0].link : ;
 
   return (
     <>
@@ -361,10 +392,10 @@ const Movie = (state) => {
           style={{width: '100%'}}
           src={banner}>
         </img>
-        <h2 className='moviePage'>{movie.title}</h2>
-        <h4 className='moviePage'>{movie.year}</h4>
-        <h4 className='rating'>Rating: {movie.contentRating}</h4>
-        <img className='poster' src={movie.image}/>
+        <h2 className='moviePage'>{title}</h2>
+        <h4 className='moviePage'>{year}</h4>
+        <h4 className='rating'>Rating: {contentRating}</h4>
+        <img className='poster' src={image}/>
         <button className='add' onClick={() => handleClick()}>
           <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" className="bi bi-plus-circle" viewBox="0 0 16 16">
             <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
@@ -372,16 +403,16 @@ const Movie = (state) => {
           </svg>
         </button>
         <div className='info'>
-          <p><span className='bold'>Genre:</span> {movie.genres}</p>
-          <p><span className='bold'>Director:</span> {movie.directors}</p>
-          <p><span className='bold'>Stars:</span> {movie.stars}</p>
-          <p><span className='bold'>Plot:</span> {movie.plot}</p>
+          <p><span className='bold'>Genre:</span> {genres}</p>
+          <p><span className='bold'>Director:</span> {directors}</p>
+          <p><span className='bold'>Stars:</span> {stars}</p>
+          <p><span className='bold'>Plot:</span> {plot}</p>
         </div>
       </div>
       <div className='similar'>
           <h2>Browse Similar Movies</h2>
           <SimilarTitles
-            moviesArr = {movie.similars}
+            moviesArr = {similars}
             qty = {5}
           />
       </div>

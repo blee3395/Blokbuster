@@ -80,14 +80,4 @@ imdbapiController.findMovies = (req, res, next) => {
     })
 }
 
-
-
-
-
-
-
-
-
-
-
 module.exports = imdbapiController
