@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 
 import SimilarTitles from './SimilarTitles.jsx';
 
-const Movie = (state) => {
+const Movie = () => {
   const location = useLocation();
   const { id } = location.state
   
@@ -324,7 +324,6 @@ const Movie = (state) => {
     ],
   }
 
-  // const [movie, setMovie] = useState(movieTemplate)
   const [title, setTitle] = useState(movieTemplate.title)
   const [year, setYear] = useState(movieTemplate.year)
   const [contentRating, setContentRating] = useState(movieTemplate.contentRating)
@@ -333,14 +332,16 @@ const Movie = (state) => {
   const [directors, setDirectors] = useState(movieTemplate.directors)
   const [stars, setStars] = useState(movieTemplate.stars)
   const [plot, setPlot] = useState(movieTemplate.plot)
-  const [similars, setSimilars] = useState([])
+  const [similars, setSimilars] = useState(movieTemplate.similars)
   const [banner, setBanner] = useState('https://c.tenor.com/VMhUw2mOPEkAAAAd/nicole-kidman-theatre.gif')
 
+  useEffect(() => {
+    getData()
+  }, [])
 
-  useEffect(async() => {
+  const getData = async () => {
     const res = await fetch(`/imdb/${id}`)
     const data = await res.json()    
-    // setMovie(Object.assign(movie, data))
     setTitle(data.title)
     setYear(data.year)
     setContentRating(data.contentRating)
@@ -349,25 +350,19 @@ const Movie = (state) => {
     setDirectors(data.directors)
     setStars(data.stars)
     setPlot(data.plot)
-    
-    let arr = [...similars]
-    console.log(arr === similars)
-    for (let i = 0; i < data.similars.length; i++) {
-      arr[i] = data.similars[i]
-    }
-    console.log(arr)
-    setSimilars(old => [...old, ...data.similars])
-    console.log('setSimilars in movie update:', similars)
 
+    let newData = [...similars]
+    for (let i = 0; i < newData.length; i++) {
+      newData[i] = Object.assign(newData[i], data.similars[i])
+    }
+    setSimilars(newData)
 
     if (data.posters) {
-      console.log('new banner: ', data.posters.backdrops[0].link)
       setBanner(data.posters.backdrops[0].link)
     }
+  } 
 
-  }, [])
-
-  function handleClick() {
+  const handleClick = () => {
     fetch('/profile', {
       method: 'POST',
       headers: {
@@ -381,8 +376,6 @@ const Movie = (state) => {
         console.log('Error in posting movie to db: ', err)
       })
   }
-
-  // let banner = (movie.posters) ? movie.posters.backdrops[0].link : ;
 
   return (
     <>

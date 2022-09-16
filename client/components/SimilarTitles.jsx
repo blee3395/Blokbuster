@@ -5,8 +5,6 @@ import {useState, useEffect} from 'react';
 import Poster from './Poster.jsx'
 
 const SimilarTitles = ({ moviesArr, qty }) => {
-  console.log('In similar titles ', moviesArr)
-
   const movieTemplate = {
     "id": "tt10648342",
     "rank": "1",
@@ -28,10 +26,6 @@ const SimilarTitles = ({ moviesArr, qty }) => {
 
   const [movies, setMovies] = useState(movieArr);
 
-  // console.log('from props: ', moviesArr, ' qty ', qty)
-
-  console.log('from slider: ', movies)
-
   useEffect(() => {
     setMovies(moviesArr)
   }, [])
@@ -42,6 +36,7 @@ const SimilarTitles = ({ moviesArr, qty }) => {
     row.push(<Poster 
               movie={movies} 
               index={i}
+              key={Math.random()}
             />)
   }
   return <div className="slider">{row}</div>    
