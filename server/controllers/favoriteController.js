@@ -1,4 +1,3 @@
-const e = require('express');
 const profile = require('../models/profile');
 const top250movies = require('./top250movies.json')
 
@@ -20,8 +19,6 @@ favoriteController.getFavorites = (req, res, next) => {
 }
 
 favoriteController.addMovie = (req, res, next) => {
-  // console.log('req.body: ', req.body)
-  // console.log('trying to add a movie to favs')
   
   const { id, title, year, image, plot, directors, stars, genres, imDbRating, contentRating } = req.body;
   

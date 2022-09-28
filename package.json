@@ -7,7 +7,7 @@
     "start": "nodemon server/server.ts",
     "build": "NODE_ENV=production webpack",
     "dev": "NODE_ENV=development nodemon server/server.ts & NODE_ENV=development webpack serve --open",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest --watchAll --verbose --coverage"
   },
   "repository": {
     "type": "git",
@@ -38,10 +38,12 @@
     "@babel/core": "^7.1.2",
     "@babel/preset-env": "^7.1.0",
     "@babel/preset-react": "^7.0.0",
+    "@types/jest": "^29.0.3",
     "@typescript-eslint/eslint-plugin": "^5.36.2",
     "@typescript-eslint/parser": "^5.36.2",
     "babel-loader": "^8.2.3",
     "css-loader": "^6.5.1",
+    "cypress": "^10.9.0",
     "eslint": "^7.17.0",
     "eslint-plugin-react": "^7.31.8",
     "html-webpack-plugin": "^5.5.0",
