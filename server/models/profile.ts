@@ -1,15 +1,22 @@
 import mongoose from 'mongoose';
-import * as dotenv from 'dotenv'
+import config from 'config'
+import dotenv from 'dotenv'
+
 dotenv.config()
 
-const MONGO_URI = process.env.DB_URI;
+type Database = {
+  DB_URI: string,
+  DB_NAME: string
+}
 
-mongoose.connect(MONGO_URI, {
+const DATABASE: Database = config.get('DATABASE')
+
+mongoose.connect(process.env.DB_URI, {
   // options for the connect method to parse the URI
   // useNewUrlParser: true,
   // useUnifiedTopology: true,
   // sets the name of the DB that our collections are part of
-  dbName: 'blokbuster'
+  dbName: DATABASE.DB_NAME
 })
   .then(() => console.log('Connected to Mongo DB.'))
   .catch((err: Error) => console.log('Error connecting to MongoDB :', err));
@@ -38,6 +45,4 @@ const favoriteSchema = new Schema({
 
 const Favorite = mongoose.model('favorite', favoriteSchema)
 
-module.exports = {
-  Favorite
-}
+export default Favorite

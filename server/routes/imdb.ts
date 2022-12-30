@@ -1,28 +1,18 @@
-import { Router } from 'express';
+const { Router } = require('express');
 
-import { findMovies, getMovie, getPopularMovies } from '../controllers/imdbapiController';
+// const { findMovies, getMovie, getPopularMovies } = require('../controllers/imdbapiController');
+
+import findMovies from '../controllers/imdb/findMovies';
+import getPopularMovies from '../controllers/imdb/getPopularMovies';
+// import getMovie from '../controllers/imdb/getMovie';
+
 
 const router = Router();
 
-router.get('/search/:input',
-  findMovies,
-  (req, res) => {
-    res.status(200).json(res.locals.movieResults);
-  }
-)
+router.get('/search/:input', findMovies)
 
-router.get('/:id', 
-  getMovie,
-  (req, res) => {
-    res.status(200).json(res.locals.movieInfo)
-  }
-)
+// router.get('/:id', getMovie)
 
-router.get('/',
-  getPopularMovies,
-  (req, res) => {
-    return res.status(200).json(res.locals.popularMovies);
-  }
-)
+router.get('/', getPopularMovies)
 
 export default router;

@@ -2,13 +2,17 @@ import { Request, Response, NextFunction } from 'express';
 
 import path from 'path';
 import express from 'express';
-
-const app = express();
-const PORT = 3000;
+import dotenv from 'dotenv'
+import config from 'config';
 
 // Require routers
 import imdbRouter from './routes/imdb';
 import favoriteRouter from './routes/favorite';
+
+dotenv.config()
+
+const app = express();
+const PORT: number = config.get('SERVER_PORT');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }))

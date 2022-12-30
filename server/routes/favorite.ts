@@ -1,21 +1,12 @@
 import { Router } from 'express';
 
-import { getFavorites, addMovie } from '../controllers/favoriteController';
+import getFavorites from '../controllers/favorites/getFavorites';
+import addMovie from '../controllers/favorites/addMovie';
 
 const router = Router();
 
-router.get('/',
-  getFavorites,
-  (req, res) => {
-    res.status(200).json(res.locals.favorites)
-  }
-)
+router.get('/', getFavorites)
 
-router.post('/', 
-  addMovie,
-  (req, res) => {
-    res.status(200).json({})
-  }
-);
+router.post('/', addMovie);
 
 export default router;
